@@ -1,0 +1,33 @@
+.item {
+  padding: 1rem;
+  background-color: var(--ebb);
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__img {
+    max-width: 10rem;
+    margin-bottom: 1.5rem;
+    align-self: center;
+    object-fit: cover;
+    -webkit-box-shadow: 10px 10px 15px -5px rgba(34, 60, 80, 0.6);
+    -moz-box-shadow: 10px 10px 15px -5px rgba(34, 60, 80, 0.6);
+    box-shadow: 10px 10px 15px -5px rgba(34, 60, 80, 0.6);
+  }
+
+  &__category {
+    margin-bottom: 1rem;
+    text-decoration: underline;
+    opacity: 0.5;
+  }
+
+  &__title {
+    margin-bottom: 1rem;
+  }
+
+  &__author {
+    opacity: 0.5;
+  }
+}
