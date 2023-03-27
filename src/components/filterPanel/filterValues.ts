@@ -1,3 +1,3 @@
-export const categories: string[] = ['all', 'art', 'biography', 'computers', 'history', 'medical', 'poetry'];
+export const categories: string[] = ['All', 'Art', 'Biography', 'Computers', 'History', 'Medical', 'Poetry'];
 
-export const oldCat: string[] = ['relevance', 'newest'];
+export const newness: string[] = ['Relevance', 'Newest'];

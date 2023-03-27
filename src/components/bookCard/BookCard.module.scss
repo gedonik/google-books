@@ -1,0 +1,48 @@
+.cardWrapper {
+  display: flex;
+
+  &__img {
+    width: 40%;
+    padding: 4rem 10rem;
+    background-color: grey;
+    object-fit: cover;
+  }
+
+  &__content {
+    width: 60%;
+    padding: 4rem 2rem;
+  }
+
+  &__linkToBack {
+    display: inline-block;
+    margin-bottom: 2.5rem;
+
+    i {
+      margin-right: 1rem;
+      transition: margin-left 0.3s ease-in-out, margin-right 0.3s ease-in-out;
+    }
+
+    &:hover {
+      i {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  &__categories,
+  &__title {
+    margin-bottom: 1rem;
+  }
+
+  &__author {
+    display: inline-block;
+    margin-bottom: 1rem;
+    text-decoration: underline;
+    opacity: 0.5;
+  }
+
+  &__description {
+    width: 70%;
+  }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import './mainSelect.css';
+import styles from './MainSelect.module.scss';
 
 type PropsMainSelectType = {
     options: string[],
@@ -11,7 +11,7 @@ type PropsMainSelectType = {
 const MainSelect = ({options, value, onChange, ...props}: PropsMainSelectType) => {
     return (
         <select
-            className="pagination__select"
+            className={styles.select}
             value={value}
             onChange={(e) => onChange(e.target.value)}
             {...props}

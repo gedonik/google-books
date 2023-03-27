@@ -1,25 +1,31 @@
-import React, {useEffect} from 'react';
-import {getBooks, selectBooks} from '../../store/slices/catalogBooksSlice';
-import {useAppDispatch, useAppSelector} from '../../hooks/rtkHooks';
-import BookItem from '../BookItem/BookItem';
+import React from 'react';
+import BookItem from '../bookItem/BookItem';
 import styles from './BookList.module.scss';
+import {BookType} from "../../types/types";
+import MainLoader from "../ui/loader/MainLoader";
 
-const BooksList: React.FC = () => {
-    const dispatch = useAppDispatch();
-    const {isLoading, books, error} = useAppSelector(selectBooks);
+interface PropsBooksList {
+    books: [] | BookType[] | undefined,
+    isLoading: boolean
+}
 
-    useEffect(() => {
-        dispatch(getBooks())
-    }, []);
-    // console.log(books)
+const BooksList: React.FC<PropsBooksList> = (props: PropsBooksList) => {
+    const {books, isLoading} = props;
+
     return (
-        <div className="container">
-            <h2 className={styles.title}>Found {books?.totalItems} results</h2>
-            <ul className={styles.list}>
-                {books?.items?.map(book =>
-                    <BookItem book={book} key={book.id} />
-                )}
-            </ul>
+        <div className={styles.bookList}>
+            {isLoading
+                ? <MainLoader/>
+                :
+                books?.length
+                    ?
+                    <ul className={styles.bookList__list}>
+                        {books.map(book =>
+                            <BookItem book={book} key={book.id}/>
+                        )}
+                    </ul>
+                    : <h2 className={styles.bookList__empty}>There are no books find =(</h2>
+            }
         </div>
     );
 };

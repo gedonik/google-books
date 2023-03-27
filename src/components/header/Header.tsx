@@ -1,12 +1,12 @@
 import React from 'react';
-import './Header.module.scss';
+import styles from './Header.module.scss';
 import FilterPanel from '../filterPanel/FilterPanel';
 
 const Header: React.FC = () => {
     return (
-        <header>
+        <header className={styles.header}>
             <div className="container">
-                <h2 className={`title`}>Search for books</h2>
+                <h2 className={styles.header__title}>Search for books</h2>
                 <FilterPanel />
             </div>
         </header>

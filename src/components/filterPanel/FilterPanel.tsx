@@ -1,21 +1,21 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import MainSearch from '../ui/search/MainSearch';
 import MainSelect from '../ui/select/MainSelect';
 import {categories} from './filterValues';
-import {oldCat} from './filterValues';
+import {newness} from './filterValues';
+import styles from './FilterPanel.module.scss';
+import {BooksContext} from "../../pages/mainPage/MainPage";
 
 const FilterPanel: React.FC = () => {
-    const [searchValue, setSearchValue] = useState('');
-    const [categoriesValue, setCategoriesValue] = useState('all');
-    const [oldCatValue, setOldCatValue] = useState('relevance');
+    const {categoriesValue, setCategoriesValue, newnessValue, setNewnessValue} = useContext(BooksContext);
 
     return (
-        <div className='filter-container'>
-            <MainSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
+        <div>
+            <MainSearch/>
 
-            <div className="sort">
+            <div className={styles.sortWrapper}>
                 <label htmlFor="categories">
-                    Categories
+                    <span>Categories</span>
                     <MainSelect
                         options={categories}
                         value={categoriesValue}
@@ -23,12 +23,12 @@ const FilterPanel: React.FC = () => {
                         id="categories"
                     />
                 </label>
-                <label htmlFor="oldCat">
-                    Sorting by
+                <label htmlFor="newness">
+                    <span>Sorting by</span>
                     <MainSelect
-                        options={oldCat}
-                        value={oldCatValue}
-                        onChange={setOldCatValue}
+                        options={newness}
+                        value={newnessValue}
+                        onChange={setNewnessValue}
                         id="oldCat"
                     />
                 </label>

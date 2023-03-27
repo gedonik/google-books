@@ -1,0 +1,21 @@
+.mainPage {
+  padding-bottom: 2rem !important;
+
+  &__title {
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  &__btn {
+    display: block;
+    margin: 0 auto;
+    padding: 1rem 3rem;
+    border: 1px solid var(--main-dark) !important;
+    border-radius: 1px;
+    transition: opacity 0.3s ease-in-out;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}

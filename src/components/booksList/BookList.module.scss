@@ -1,11 +1,16 @@
-.title {
-  margin-bottom: 1rem;
-  text-align: center;
+.bookList {
+  padding: 1rem 0;
+
+  &__list {
+    padding: 1.5rem 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  &__empty {
+    color: #e84747;
+    text-align: center;
+  }
 }
 
-.list {
-  padding: 1.5rem 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}

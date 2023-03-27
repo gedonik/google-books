@@ -1,19 +1,31 @@
-import { RootState } from '../store';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { CatalogBooksState } from '../../types/types';
+import {RootState} from '../store';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {CatalogBooksState} from '../../types/types';
 import axios from 'axios';
 
 const initialState: CatalogBooksState = {
-    isLoading: false,
+    isLoading: true,
     books: [],
-    error: null
+    error: null,
+    currentBook: null
 }
-const KEY = 'AIzaSyB8PgwGepPiF1ase6klkX4pMjOnIjTdwRA';
-const API_URL = `https://www.googleapis.com/books/v1/volumes?q=react&key=${KEY}`;
 
-export const getBooks = createAsyncThunk(
+type PropsFetchBooks = {
+    searchQuery: string | number,
+    newnessValue: string,
+    offsetPagination: number,
+    paginationBooksQuantity: number
+}
+
+const KEY = 'AIzaSyB8PgwGepPiF1ase6klkX4pMjOnIjTdwRA';
+
+export const fetchBooks = createAsyncThunk(
     'getApi/getBooks',
-    async function (_, {rejectWithValue}) {
+    async function (params: PropsFetchBooks, {rejectWithValue}) {
+        const {searchQuery, newnessValue, offsetPagination, paginationBooksQuantity} = params;
+
+        const API_URL = `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&orderBy=${newnessValue}&key=${KEY}&startIndex=${offsetPagination}&maxResults=${paginationBooksQuantity}`;
+
         try {
             return await axios.get(API_URL).then(res => res.data);
         } catch (e: any) {
@@ -25,22 +37,29 @@ export const getBooks = createAsyncThunk(
 export const catalogBooksSlice = createSlice({
     name: 'catalogBooks',
     initialState,
-    reducers: {},
+    reducers: {
+        findBookById: (state, action) => {
+            state.currentBook = state.books.find(book => book.id === action.payload);
+        }
+    },
     extraReducers: (builder) => {
-        builder.addCase(getBooks.pending, (state) => {
+        builder.addCase(fetchBooks.pending, (state) => {
             state.isLoading = true;
-            state.error = null
+            state.error = null;
         });
-        builder.addCase(getBooks.fulfilled, (state, {payload}) => {
+        builder.addCase(fetchBooks.fulfilled, (state, {payload}) => {
+            state.isLoading = true;
+            state.books = payload.items;
             state.isLoading = false;
-            state.books = payload;
         });
-        builder.addCase(getBooks.rejected, (state, payload) => {
+        builder.addCase(fetchBooks.rejected, (state, payload) => {
             if (payload) state.error = payload;
             state.isLoading = false;
         })
     }
 })
+
+export const {findBookById} = catalogBooksSlice.actions;
 
 export const selectBooks = (state: RootState) => state.catalogBooks;
 

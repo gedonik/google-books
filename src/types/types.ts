@@ -15,7 +15,7 @@ type OffersType = {
     }
 }
 
-export interface BooksType {
+export interface BookType {
     kind: string,
     id: string,
     etag: string,
@@ -90,6 +90,7 @@ export interface BooksType {
 
 export interface CatalogBooksState {
     isLoading: boolean,
-    books: [] | BooksType[],
-    error: any
+    books: [] | BookType[],
+    error: any,
+    currentBook: null | BookType | undefined
 }
