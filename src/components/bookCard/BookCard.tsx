@@ -28,6 +28,11 @@ const BookCard: React.FC = () => {
                             currentBook.volumeInfo.categories.map(category => `${category} /`)
                             : ''}
                     </p>
+                    <img
+                        className={styles.cardWrapper__imgMobile}
+                        src={currentBook?.volumeInfo.imageLinks.thumbnail}
+                        alt={currentBook?.volumeInfo.title}
+                    />
                     <h2 className={styles.cardWrapper__title}>{currentBook?.volumeInfo.title}</h2>
                     <span className={styles.cardWrapper__author}>
                         {currentBook?.volumeInfo.authors

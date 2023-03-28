@@ -20,7 +20,7 @@ const BooksList: React.FC<PropsBooksList> = (props: PropsBooksList) => {
                 books?.length
                     ?
                     <ul className={styles.bookList__list}>
-                        {books.map(book =>
+                        {books?.map(book =>
                             <BookItem book={book} key={book.id}/>
                         )}
                     </ul>

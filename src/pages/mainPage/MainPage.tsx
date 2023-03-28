@@ -61,8 +61,12 @@ const MainPage: React.FC = () => {
     }, [books, categoriesValue])
 
     const addMoreBooks = () => {
-        setOffsetPagination((prevState: number) => prevState + 30);
-        setPaginationBooksQuantity((prevState: number) => prevState + 30);
+        if (offsetPagination <= 10 && paginationBooksQuantity <= 10) {
+            setOffsetPagination((prevState: number) => prevState + 30);
+            setPaginationBooksQuantity((prevState: number) => prevState + 30);
+        } else {
+            alert('There are no more books');// как сделать лучше ? модалку вставить, поставить флаг в else на true
+        }
     }
 
     return (
