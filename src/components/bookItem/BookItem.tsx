@@ -16,7 +16,7 @@ const BookItem: React.FC<PropsBookItem> = (props: PropsBookItem) => {
 
     return (
         <li className={styles.item}>
-            <article>
+            <article className={styles.item__wrapper}>
                 <Link
                     className={styles.item__link}
                     onClick={() => dispatch(findBookById(book.id))}
