@@ -8,7 +8,7 @@ type PropsMainSelectType = {
     id: string
 }
 
-const MainSelect = ({options, value, onChange, ...props}: PropsMainSelectType) => {
+const MainSelect = ({ options, value, onChange, ...props }: PropsMainSelectType) => {
     return (
         <select
             className={styles.select}

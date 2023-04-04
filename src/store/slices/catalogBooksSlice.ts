@@ -1,6 +1,6 @@
-import {RootState} from '../store';
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import {CatalogBooksState} from '../../types/types';
+import { RootState } from '../store';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { CatalogBooksState } from '../../types/types';
 import axios from 'axios';
 
 const initialState: CatalogBooksState = {
@@ -18,16 +18,23 @@ type PropsFetchBooks = {
 }
 
 const KEY = 'AIzaSyB8PgwGepPiF1ase6klkX4pMjOnIjTdwRA';
+const API_URL = 'https://www.googleapis.com/books/v1/volumes';
 
 export const fetchBooks = createAsyncThunk(
     'getApi/getBooks',
-    async function (params: PropsFetchBooks, {rejectWithValue}) {
-        const {searchQuery, newnessValue, offsetPagination, paginationBooksQuantity} = params;
+    async function (urlParams: PropsFetchBooks, { rejectWithValue }) {
+        const { searchQuery, newnessValue, offsetPagination, paginationBooksQuantity } = urlParams;
 
-        const API_URL = `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&orderBy=${newnessValue}&key=${KEY}&startIndex=${offsetPagination}&maxResults=${paginationBooksQuantity}`;
+        const params = {
+            q: searchQuery,
+            orderBy: newnessValue,
+            key: KEY,
+            startIndex: offsetPagination,
+            maxResults: paginationBooksQuantity
+        }
 
         try {
-            return await axios.get(API_URL).then(res => res.data);
+            return await axios.get(API_URL, {params}).then(res => res.data);
         } catch (e: any) {
             return rejectWithValue(e.message);
         }
@@ -59,7 +66,7 @@ export const catalogBooksSlice = createSlice({
     }
 })
 
-export const {findBookById} = catalogBooksSlice.actions;
+export const { findBookById } = catalogBooksSlice.actions;
 
 export const selectBooks = (state: RootState) => state.catalogBooks;
 

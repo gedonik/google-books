@@ -1,16 +1,17 @@
 import React from 'react';
 import styles from './BookItem.module.scss';
-import {Link} from 'react-router-dom';
-import {BookType} from '../../types/types';
-import {useAppDispatch} from "../../hooks/storeHooks";
-import {findBookById} from "../../store/slices/catalogBooksSlice";
+import { Link } from 'react-router-dom';
+import { BookType } from '../../types/types';
+import { useAppDispatch } from '../../hooks/storeHooks';
+import { findBookById } from '../../store/slices/catalogBooksSlice';
+import { strInArrSplitter } from '../../services/strInArrSplitter';
 
 type PropsBookItem = {
     book: BookType
 }
 
 const BookItem: React.FC<PropsBookItem> = (props: PropsBookItem) => {
-    const {book} = props;
+    const { book } = props;
     const dispatch = useAppDispatch();
 
     return (
@@ -33,7 +34,7 @@ const BookItem: React.FC<PropsBookItem> = (props: PropsBookItem) => {
                     <div className={styles.item__author}>
                         {book.volumeInfo.authors
                             ?
-                            book.volumeInfo.authors.map(author => `${author}, `)
+                            strInArrSplitter(book.volumeInfo.authors, ',')
                             : ''
                         }
                     </div>

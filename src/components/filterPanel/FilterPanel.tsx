@@ -1,13 +1,13 @@
-import React, {useContext, useState} from 'react';
+import React, { useContext } from 'react';
 import MainSearch from '../ui/search/MainSearch';
 import MainSelect from '../ui/select/MainSelect';
-import {categories} from './filterValues';
-import {newness} from './filterValues';
+import { categories } from './filterValues';
+import { newness } from './filterValues';
 import styles from './FilterPanel.module.scss';
-import {BooksContext} from "../../pages/mainPage/MainPage";
+import { BooksContext } from '../../pages/MainPage/MainPage';
 
 const FilterPanel: React.FC = () => {
-    const {categoriesValue, setCategoriesValue, newnessValue, setNewnessValue} = useContext(BooksContext);
+    const { categoriesValue, setCategoriesValue, newnessValue, setNewnessValue } = useContext(BooksContext);
 
     return (
         <div>

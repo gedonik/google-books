@@ -1,12 +1,13 @@
 import React from 'react';
-import styles from './BookCard.module.scss';
-import Header from '../header/Header';
-import {useAppSelector} from "../../hooks/storeHooks";
-import {selectBooks} from "../../store/slices/catalogBooksSlice";
-import {Link} from 'react-router-dom';
+import styles from './BookCardPage.module.scss';
+import Header from '../../components/header/Header';
+import { useAppSelector } from '../../hooks/storeHooks';
+import { selectBooks } from '../../store/slices/catalogBooksSlice';
+import { Link } from 'react-router-dom';
+import { strInArrSplitter } from '../../services/strInArrSplitter';
 
-const BookCard: React.FC = () => {
-    const {currentBook} = useAppSelector(selectBooks);
+const BookCardPage: React.FC = () => {
+    const { currentBook } = useAppSelector(selectBooks);
 
     return (
         <div>
@@ -25,7 +26,7 @@ const BookCard: React.FC = () => {
                     <p className={styles.cardWrapper__categories}>
                         {currentBook?.volumeInfo.categories
                             ?
-                            currentBook.volumeInfo.categories.map(category => `${category} /`)
+                            strInArrSplitter(currentBook.volumeInfo.categories, ' /')
                             : ''}
                     </p>
                     <img
@@ -37,7 +38,7 @@ const BookCard: React.FC = () => {
                     <span className={styles.cardWrapper__author}>
                         {currentBook?.volumeInfo.authors
                             ?
-                            currentBook.volumeInfo.authors.map(author => `${author}, `)
+                            strInArrSplitter(currentBook.volumeInfo.authors, ',')
                             : ''}
                     </span>
                     <p className={styles.cardWrapper__description}>{currentBook?.volumeInfo.description}</p>
@@ -47,4 +48,4 @@ const BookCard: React.FC = () => {
     );
 };
 
-export default BookCard;
+export default BookCardPage;

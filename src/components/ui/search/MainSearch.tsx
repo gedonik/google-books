@@ -1,29 +1,29 @@
-import React, {FormEvent, useContext, useState} from 'react';
+import React, { FormEvent, useContext, useState } from 'react';
 import styles from './MainSearch.module.scss';
-import {BooksContext} from "../../../pages/mainPage/MainPage";
+import { BooksContext } from '../../../pages/MainPage/MainPage';
 
 const MainSearch = () => {
-    const {setSearchQuery} = useContext(BooksContext);
-    const [localSearchValue, setLocalSearchValue] = useState('');
+    const { setSearchQuery } = useContext(BooksContext);
+    const [localSearchQuery, setLocalSearchQuery] = useState('');
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-
-        setSearchQuery(localSearchValue);
-        setLocalSearchValue('');
+        setSearchQuery(localSearchQuery);
+        setLocalSearchQuery('');
     }
 
     return (
-        <form className={styles.formSearch} onSubmit={handleSubmit}>
+        <form className={styles.formSearch} onSubmit={handleSubmit} data-testid="form">
             <input
-                value={localSearchValue}
-                onChange={(e) => setLocalSearchValue(e.target.value)}
+                value={localSearchQuery}
+                onChange={(e) => setLocalSearchQuery(e.target.value)}
                 className={styles.formSearch__input}
                 type="text"
                 placeholder="Type something..."
                 name="search"
+                data-testid="input-search"
             />
-            <button className={`reset-btn ${styles.searchBtn}`} type="submit">
+            <button className={`reset-btn ${styles.searchBtn}`} type="submit" data-testid="search-btn">
                 <i className="bi bi-search"></i>
             </button>
         </form>
