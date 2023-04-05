@@ -1,15 +1,14 @@
-# Telegram-bot is a Vue application.
+# Google-books is a React application.
 
-Frontend Vue app for customer.
+Frontend React app for searching books.
 
 ## Installation
 
 Clone my project, after type in terminal:
 
 ```bash
-  npm install 
-  json-server db.json
-  npm run serve
+  npm install
+  npm run dev
 ```
 
 ## Tech Stack
@@ -18,8 +17,8 @@ HTML, module scss, react, rtk, react router, axios.
 
 ## Demo
 
-https://vue-bot-pi.vercel.app/
+https://google-books-psi.vercel.app/
 
 ## Screenshots
 
-![App Screenshot](https://i.postimg.cc/8k0RY6pk/telegram-bot.jpg)
+![App Screenshot](https://i.postimg.cc/RCGR4219/google-books.jpg)
