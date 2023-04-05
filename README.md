@@ -13,7 +13,7 @@ Clone my project, after type in terminal:
 
 ## Tech Stack
 
-HTML, module scss, react, rtk, react router, axios.
+react, rtk, react router, axios, module scss.
 
 ## Demo
 
