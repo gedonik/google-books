@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": "src",
     "target": "esnext",
+    "useDefineForClassFields": true,
     "lib": [
       "dom",
       "dom.iterable",
@@ -9,7 +10,7 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -31,7 +32,10 @@
   },
   "types": ["node", "jest", "@testing-library/jest-dom"],
   "include": [
+    "vite.config.ts",
+    ".eslintrc.cjs",
     "src"
-  ]
+  ],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
 
