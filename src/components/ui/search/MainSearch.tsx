@@ -1,6 +1,8 @@
 import React, { FormEvent, useContext, useState } from 'react';
+
+import { BooksContext } from '../../../pages/MainPage/bookContext';
+
 import styles from './MainSearch.module.scss';
-import { BooksContext } from '../../../pages/MainPage/MainPage';
 
 function MainSearch() {
   const { setSearchQuery } = useContext(BooksContext);
@@ -18,15 +20,16 @@ function MainSearch() {
       onSubmit={handleSubmit}
       data-testid="form"
     >
-      <input
-        value={localSearchQuery}
-        onChange={(e) => setLocalSearchQuery(e.target.value)}
-        className={styles.formSearch__input}
-        type="text"
-        placeholder="Type something..."
-        name="search"
-        data-testid="input-search"
-      />
+      <label htmlFor="search">
+        <input
+          value={localSearchQuery}
+          onChange={(e) => setLocalSearchQuery(e.target.value)}
+          className={styles.formSearch__input}
+          type="text"
+          placeholder="Type something..."
+          id="search"
+        />
+      </label>
       <button
         className={`reset-btn ${styles.searchBtn}`}
         type="submit"

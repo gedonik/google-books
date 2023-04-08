@@ -1,22 +1,23 @@
 import React from 'react';
+
 import styles from './MainSelect.module.scss';
 
 type PropsMainSelectType = {
   options: string[];
   value: string;
-  onChange: Function;
+  onChange: (value: string) => string;
   id: string;
 };
 
 function MainSelect(props: PropsMainSelectType) {
-  const { options, value, onChange, ...params } = props;
+  const { options, value, onChange, id } = props;
 
   return (
     <select
       className={styles.select}
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      {...params}
+      id={id}
     >
       {options.map((option) => (
         <option value={option} key={option}>

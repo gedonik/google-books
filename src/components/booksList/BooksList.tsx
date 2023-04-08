@@ -1,8 +1,10 @@
 import React from 'react';
-import BookItem from '../bookItem/BookItem';
-import styles from './BookList.module.scss';
+
 import { BookType } from '../../types/types';
+import BookItem from '../bookItem/BookItem';
 import MainLoader from '../ui/loader/MainLoader';
+
+import styles from './BookList.module.scss';
 
 interface PropsBooksList {
   books: [] | BookType[] | undefined;
@@ -29,6 +31,6 @@ function BooksList(props: PropsBooksList) {
       )}
     </div>
   );
-};
+}
 
 export default BooksList;

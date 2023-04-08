@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
+
+import { BooksContext } from '../../pages/MainPage/bookContext';
 import MainSearch from '../ui/search/MainSearch';
 import MainSelect from '../ui/select/MainSelect';
-import { categories, newness } from './filterValues';
 
 import styles from './FilterPanel.module.scss';
-import { BooksContext } from '../../pages/MainPage/MainPage';
+import { categories, newness } from './filterValues';
 
 function FilterPanel() {
   const { categoriesValue, setCategoriesValue, newnessValue, setNewnessValue } =
@@ -13,9 +14,8 @@ function FilterPanel() {
   return (
     <div>
       <MainSearch />
-
       <div className={styles.sortWrapper}>
-        <label htmlFor="categories">
+        <div className={styles.categories}>
           <span>Categories</span>
           <MainSelect
             options={categories}
@@ -23,8 +23,8 @@ function FilterPanel() {
             onChange={setCategoriesValue}
             id="categories"
           />
-        </label>
-        <label htmlFor="newness">
+        </div>
+        <div className={styles.newness}>
           <span>Sorting by</span>
           <MainSelect
             options={newness}
@@ -32,10 +32,10 @@ function FilterPanel() {
             onChange={setNewnessValue}
             id="newness"
           />
-        </label>
+        </div>
       </div>
     </div>
   );
-};
+}
 
 export default FilterPanel;

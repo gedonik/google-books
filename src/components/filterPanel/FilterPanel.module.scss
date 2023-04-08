@@ -1,29 +1,23 @@
 .sortWrapper {
   display: flex;
   justify-content: center;
+
+  span {
+    margin-right: 1rem;
+  }
 }
 
-label:first-child {
-  margin-right: 1rem;
-}
-
-label span {
+.categories {
   margin-right: 1rem;
 }
 
 @media only screen and (max-width: 350px) {
   .sortWrapper {
     flex-direction: column;
+  }
 
-    &:first-child {
-      margin-bottom: 1rem;
-    }
-
-    label {
-      display: inline-block;
-    }
-    label:first-child {
-      margin-bottom: 1.5rem;
-    }
+  .categories {
+    margin-right: 0;
+    margin-bottom: 1.5rem;
   }
 }

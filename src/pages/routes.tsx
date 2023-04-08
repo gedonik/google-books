@@ -1,7 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
+
 import App from '../app/App';
-import ErrorPage from './ErrorPage/ErrorPage';
+
 import BookCardPage from './BookCardPage/BookCardPage';
+import ErrorPage from './ErrorPage/ErrorPage';
 
 const router = createBrowserRouter([
   {

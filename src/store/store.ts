@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import catalogBooksSlice from './slices/catalogBooksSlice';
+
+import { catalogBooksSlice } from './slices/catalogBooksSlice';
 
 const store = configureStore({
   reducer: {

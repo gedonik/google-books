@@ -1,10 +1,13 @@
 import React from 'react';
+
 import { Link } from 'react-router-dom';
-import styles from './BookCardPage.module.scss';
+
 import Header from '../../components/header/Header';
 import { useAppSelector } from '../../hooks/storeHooks';
-import { selectBooks } from '../../store/slices/catalogBooksSlice';
 import { strInArrSplitter } from '../../services/strInArrSplitter';
+import { selectBooks } from '../../store/slices/catalogBooksSlice';
+
+import styles from './BookCardPage.module.scss';
 
 function BookCardPage() {
   const { currentBook } = useAppSelector(selectBooks);
@@ -48,6 +51,6 @@ function BookCardPage() {
       </div>
     </div>
   );
-};
+}
 
 export default BookCardPage;

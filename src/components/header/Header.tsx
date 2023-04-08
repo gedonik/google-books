@@ -1,6 +1,8 @@
 import React from 'react';
-import styles from './Header.module.scss';
+
 import FilterPanel from '../filterPanel/FilterPanel';
+
+import styles from './Header.module.scss';
 
 function Header() {
   return (

@@ -1,31 +1,14 @@
-import React, { createContext, useEffect, useState } from 'react';
-import Header from '../../components/header/Header';
+import React, { useEffect, useState } from 'react';
+
 import BooksList from '../../components/booksList/BooksList';
+import Header from '../../components/header/Header';
 import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
 import { fetchBooks, selectBooks } from '../../store/slices/catalogBooksSlice';
-import ErrorPage from '../ErrorPage/ErrorPage';
 import { BookType } from '../../types/types';
+import ErrorPage from '../ErrorPage/ErrorPage';
+
 import styles from './MainPage.module.scss';
-
-interface BooksContextType {
-  setSearchQuery: Function;
-  categoriesValue: string;
-  setCategoriesValue: Function;
-  newnessValue: string;
-  setNewnessValue: Function;
-}
-
-const booksContextDefaultValue: BooksContextType = {
-  setSearchQuery: () => {},
-  categoriesValue: 'All',
-  setCategoriesValue: () => {},
-  newnessValue: 'Relevance',
-  setNewnessValue: () => {},
-};
-
-export const BooksContext = createContext<BooksContextType>(
-  booksContextDefaultValue
-);
+import { BooksContext } from './bookContext';
 
 function MainPage() {
   const [searchQuery, setSearchQuery] = useState('react');
@@ -48,7 +31,13 @@ function MainPage() {
         paginationBooksQuantity,
       })
     );
-  }, [searchQuery, newnessValue, paginationBooksQuantity]);
+  }, [
+    searchQuery,
+    newnessValue,
+    paginationBooksQuantity,
+    dispatch,
+    offsetPagination,
+  ]);
 
   const filteredBooksByCategory = (arr: BookType[], sortParam: string) =>
     arr.filter((item) =>

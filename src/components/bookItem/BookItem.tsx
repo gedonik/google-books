@@ -1,10 +1,13 @@
 import React from 'react';
+
 import { Link } from 'react-router-dom';
-import styles from './BookItem.module.scss';
-import { BookType } from '../../types/types';
+
 import { useAppDispatch } from '../../hooks/storeHooks';
-import { findBookById } from '../../store/slices/catalogBooksSlice';
 import { strInArrSplitter } from '../../services/strInArrSplitter';
+import { findBookById } from '../../store/slices/catalogBooksSlice';
+import { BookType } from '../../types/types';
+
+import styles from './BookItem.module.scss';
 
 type PropsBookItem = {
   book: BookType;
@@ -44,6 +47,6 @@ function BookItem(props: PropsBookItem) {
       </article>
     </li>
   );
-};
+}
 
 export default BookItem;

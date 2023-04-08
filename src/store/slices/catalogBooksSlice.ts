@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { RootState } from '../store';
+
 import { CatalogBooksState } from '../../types/types';
 
 const initialState: CatalogBooksState = {
@@ -40,8 +40,11 @@ export const fetchBooks = createAsyncThunk(
 
     try {
       return await axios.get(API_URL, { params }).then((res) => res.data);
-    } catch (e: any) {
-      return rejectWithValue(e.message);
+    } catch (error) {
+      if (error instanceof Error) {
+        return rejectWithValue(error.message);
+      }
+      return error;
     }
   }
 );
@@ -75,6 +78,4 @@ export const catalogBooksSlice = createSlice({
 
 export const { findBookById } = catalogBooksSlice.actions;
 
-export const selectBooks = (state: RootState) => state.catalogBooks;
-
-export default catalogBooksSlice;
+export const selectBooks = (state) => state.catalogBooks;
